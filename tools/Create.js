@@ -1,9 +1,11 @@
 export function CreateDiv(){
     const parentDiv = document.createElement("div");
-    const attributesClass = parentDiv.setAttribute("class", "parentDiv");
+    parentDiv.setAttribute("class", "parentDiv");
     const adding = document.body.appendChild(parentDiv);
     return adding;
 }
+
+
 
 export function CreateEurosInput(){
     const input = document.createElement("input");
@@ -24,23 +26,25 @@ export function CreateChfInput(){
     return input;
 }
 
+export function CreateSwap(){
+    const input = document.createElement("input");
+    input.setAttribute("id","swap");
+    input.setAttribute("class","swap");
+    input.setAttribute("type","button");
+    input.setAttribute("value","↔");
+
+    return input;
+}
+
 export function Wrapper(parentDiv,firstinput,secondinput){
     const parent = parentDiv;
     const firstInput = firstinput;
     const secondInput= secondinput;
-
-    parent.appendChild(firstInput);
-    parent.appendChild(secondInput);
+    const form = CreateForm();
+    const CreateSwap = CreateSwap();
+    parent.appendChild(form);
+    form.appendChild(firstInput);
+    form.appendChild(secondInput);
 
     console.log(parent);
-}
-
-export function CreateSwap(){
-    const input = document.createElement("input");
-    const attributesId = input.setAttribute("id","swap");
-    const attributesClass = input.setAttribute("class","swap");
-    const attributeType = input.setAttribute("type","button");
-    const buttonAttributesText = input.setAttribute("value","↔");
-
-    return input;
 }
