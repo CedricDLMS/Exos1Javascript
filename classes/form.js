@@ -21,23 +21,25 @@ export default class Form{
         if(this.FirstInput.getAttribute("id")=="euros"){
             this.FirstInput.addEventListener("input", (event)=>{
                 this.SecondInput.value = this.FirstInput.value * EuroToChf;
-                event.PreventDefault();
             })
             this.SecondInput.addEventListener("input", (event)=>{
                 this.FirstInput.value = this.SecondInput.value * ChfToEuros;
-                event.PreventDefault();
             })
         }
         if(this.FirstInput.getAttribute("id")=="chf"){
             this.FirstInput.addEventListener("input", (event)=>{
                 this.SecondInput.value = this.FirstInput.value * ChfToEuros;
-                event.PreventDefault();
             })
             this.SecondInput.addEventListener("input", (event)=>{
                 this.FirstInput.value = this.SecondInput.value * EuroToChf;
-                event.PreventDefault();
             })
         }
+
+        const form = document.getElementById("form");
+        form.addEventListener("submit",(event)=>{
+            event.preventDefault();   // EVITE LE SUBMIT
+        });
+
     }
     addCss(){
         const style = document.createElement('style');
@@ -53,8 +55,6 @@ export default class Form{
             if(state){
                 form.setAttribute("style","flex-direction : column-reverse;");
                 state = false;
-                console.log("= true");
-
             }else{
                 form.setAttribute("style","flex-direction : column;");
                 state = true;
