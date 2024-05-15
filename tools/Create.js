@@ -1,10 +1,16 @@
 export function CreateDiv(){
     const parentDiv = document.createElement("div");
-    parentDiv.setAttribute("class", "parentDiv");
+    const attributesClass = parentDiv.setAttribute("class", "parentDiv");
     const adding = document.body.appendChild(parentDiv);
     return adding;
 }
 
+export function CreateForm(){
+    const form = document.createElement("form");
+    form.setAttribute("id", "form");
+    form.setAttribute("class", "parentForm");
+    return form;
+}
 
 
 export function CreateEurosInput(){
@@ -41,9 +47,11 @@ export function Wrapper(parentDiv,firstinput,secondinput){
     const firstInput = firstinput;
     const secondInput= secondinput;
     const form = CreateForm();
-    const CreateSwap = CreateSwap();
+    const swap = CreateSwap();
+    
     parent.appendChild(form);
     form.appendChild(firstInput);
+    form.appendChild(swap);
     form.appendChild(secondInput);
 
     console.log(parent);
