@@ -49,9 +49,73 @@ export function CreateRegions(regionName,code){
     const option = document.createElement("option");
 
     option.setAttribute("value", regionName);
-    option.setAttribute("id",`region${code}`);
+    option.setAttribute("id",`${code}R`);
     option.innerText = regionName;
     return option;
 }
 
 // ----------------- PARTIE DEPARTEMENTS -------
+
+// Creation du menu select pour les départements
+export function CreateSelectDeparement(){
+    // cree l'element
+    const select = document.createElement("select");
+
+    // set attributes
+    select.setAttribute("id", "select-departement");
+    select.setAttribute("name", "departement-select");
+    select.setAttribute("class", "select departement");
+    // cree option default
+    const defaultOption = document.createElement("option");
+    defaultOption.setAttribute("value", "");
+    defaultOption.innerText = "Selectionnez un departement";
+    // ajoute option par default
+    select.appendChild(defaultOption);
+
+    return select;
+}
+
+// Creation des options du select departement
+export function CreateDepartementOptions(departementName,code){
+
+    const option = document.createElement("option");
+
+    option.setAttribute("value", departementName);
+    option.setAttribute("id",`${code}D`);
+    option.innerText = departementName;
+    return option;
+}
+
+
+// -------------------------- COMMUNE ---------------------------
+
+export function CreateSelectCommune() {
+    // Crée l'élément
+    const select = document.createElement("select");
+
+    // Définit les attributs
+    select.setAttribute("id", "select-commune");
+    select.setAttribute("name", "commune-select");
+    select.setAttribute("class", "select commune");
+
+    // Crée l'option par défaut
+    const defaultOption = document.createElement("option");
+    defaultOption.setAttribute("value", "");
+    defaultOption.innerText = "Sélectionnez une commune";
+
+    // Ajoute l'option par défaut
+    select.appendChild(defaultOption);
+
+    return select;
+}
+
+export function CreateCommuneOptions(communeName, code) {
+    const option = document.createElement("option");
+
+    // Définit les attributs
+    option.setAttribute("value", communeName);
+    option.setAttribute("id", `${code}C`); // Utilise `${code}C` pour distinguer des départements
+    option.innerText = communeName;
+
+    return option;
+}
