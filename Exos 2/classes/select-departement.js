@@ -1,5 +1,6 @@
 import { CreateDepartementOptions, CreateSelectDeparement, CreateDiv } from "../tools/Create.js";
 import fetchDepartements from "../tools/DepartementFetch.js";
+import { selectCommunes } from "./select-communes.js";
 
 
 
@@ -45,6 +46,18 @@ export class selectDepartement{
     getList(){ // sert pas a grand choses
         return this.departementListe;
     }
+    async communeWrapper(code) {
+        const previous = document.getElementById("select-commune");
+        if (previous === null) {
+            this.communeSection = new selectCommunes(code, document.getElementById("commune-container"));
+            await this.communeSection.Wrapper();
+            return 0;
+        }
+        this.departementSection.communeSection.communeFinalSection.remove();
+        previous.remove();
+        this.communeSection = new selectCommunes(code, document.getElementById("commune-container"));
+        await this.communeSection.Wrapper();
+    }
 
     eventListener(){
         this.selectMenu.addEventListener("change", (event)=>{
@@ -53,6 +66,9 @@ export class selectDepartement{
         const selectedOptionId = selectedOption.id;
         const parsedId = selectedOptionId.substring(0,2); // Get the id attribute of the selected option
         console.log(selectedOptionId); 
+        (async()=>{
+            await this.communeWrapper(parsedId);
+        })();
         })
     }
     

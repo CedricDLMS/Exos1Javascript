@@ -29,7 +29,7 @@ export class selectRegion{
     }
     // permet le wrapping à l'initialisation
     async Wrapper(){
-        this.parentDiv = CreateDiv();
+        this.parentDiv = document.getElementById("region-container");
         await this.regionsGetter();
         this.CreateRegionsOption();
         this.parentDiv.appendChild(this.selectMenu);
@@ -38,12 +38,16 @@ export class selectRegion{
     async departementWrapper(code){
         const previous = document.getElementById("select-departement");
         if(previous === null){
-            this.departementSection = new selectDepartement(code,this.parentDiv);
+            this.departementSection = new selectDepartement(code,document.getElementById("departement-container"));
             await this.departementSection.Wrapper();
             return 0;
         }
+        this.departementSection.selectMenu.remove();
+        this.departementSection.communeSection.selectMenu.remove();
+        this.departementSection.communeSection.communeFinalSection.displayDiv.remove();
+
         previous.remove();
-        this.departementSection = new selectDepartement(code,this.parentDiv);
+        this.departementSection = new selectDepartement(code,document.getElementById("departement-container"));
         await this.departementSection.Wrapper();
         
     }
@@ -56,6 +60,7 @@ export class selectRegion{
         console.log(selectedOptionId); 
         (async()=>{
             await this.departementWrapper(parsedId);
+            
         })();
         })
     }

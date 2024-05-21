@@ -3,18 +3,19 @@
  * 
  * @returns {HTMLElement} L'élément <div> nouvellement créé et ajouté au corps du document.
  */
-export function CreateDiv(){
+export function CreateDiv(name = "parent", parentDive = document.body){
     // Création de l'élément <div>
-    const parentDiv = document.createElement("div");
+    const newDiv = document.createElement("div");
+    const parentDiv = parentDive;
 
     // Définition de l'attribut de classe pour l'élément <div>
-    parentDiv.setAttribute("class", "parentDiv");
+    parentDiv.setAttribute("class", name);
 
     // Ajout de l'élément <div> au corps du document
-    document.body.appendChild(parentDiv);
+    parentDiv.appendChild(parentDiv);
 
     // Retourne l'élément <div> nouvellement créé et ajouté au corps du document
-    return parentDiv;
+    return newDiv;
 }
 // ------------------- PARTIE REGIONS ----------
 
@@ -119,3 +120,32 @@ export function CreateCommuneOptions(communeName, code) {
 
     return option;
 }
+
+
+// ---------------- COMMUNE FINAL ---------------------------
+
+export function CreateSelectCommuneFinal() {
+     // Crée l'élément conteneur principal
+     const displayDiv = document.createElement("div");
+     displayDiv.setAttribute("id", "display-commune-final");
+     displayDiv.setAttribute("class", "commune-final-display");
+ 
+     // Crée les éléments pour le nom, la population et le code postal
+     const nameElement = document.createElement("h1");
+     nameElement.setAttribute("id", "commune-final-name");
+ 
+     const populationElement = document.createElement("p");
+     populationElement.setAttribute("id", "commune-final-population");
+ 
+     const postalCodeElement = document.createElement("p");
+     postalCodeElement.setAttribute("id", "commune-final-postalcode");
+ 
+     // Ajoute les éléments au conteneur principal
+     displayDiv.appendChild(nameElement);
+     displayDiv.appendChild(populationElement);
+     displayDiv.appendChild(postalCodeElement);
+ 
+     return displayDiv;
+}
+
+
