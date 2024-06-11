@@ -11,7 +11,7 @@ import { selectDepartement } from "./classes/select-departement.js";
 const selectRegionClass = new selectRegion();
 await selectRegionClass.Wrapper();
 selectRegionClass.eventListener();
-
+console.log("sqdDQSDQSDQSDQS");
 
 console.log(selectRegionClass.departementSection);
 
